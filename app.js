@@ -8,13 +8,11 @@ function toggleTheme() {
   const savedTheme = localStorage.getItem('theme');
   if (savedTheme) document.body.dataset.theme = savedTheme;
   
-  // Set dynamic BASE_URL based on environment
-  // (For frontend bundlers like webpack, process.env.NODE_ENV is injected;
-  //  if not, you can use window.location.hostname as a fallback.)
+  // Set BASE_URL based on environment
   const BASE_URL = (process.env.NODE_ENV === 'deployment')
     ? 'https://task-flow.fly.dev' 
     : 'http://localhost:8080';
-  
+ 
   // D3 Chart setup
   let tasks = [];
   const svg = d3.select("svg");
@@ -46,7 +44,7 @@ function toggleTheme() {
   }
   
   fetchTasks();
-    
+
   // Close modal buttons
   const closeButtons = document.querySelectorAll(".close");
   closeButtons.forEach(btn => {
@@ -187,4 +185,3 @@ function toggleTheme() {
       alert(error.message);
     }
   });
-  
