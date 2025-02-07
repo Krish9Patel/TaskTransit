@@ -46,7 +46,7 @@ function toggleTheme() {
   }
   
   fetchTasks();
-  
+    
   // Close modal buttons
   const closeButtons = document.querySelectorAll(".close");
   closeButtons.forEach(btn => {
