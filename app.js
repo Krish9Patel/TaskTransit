@@ -11,7 +11,7 @@ function toggleTheme() {
   // Set dynamic BASE_URL based on environment
   // (For frontend bundlers like webpack, process.env.NODE_ENV is injected;
   //  if not, you can use window.location.hostname as a fallback.)
-  const BASE_URL = (typeof process !== 'undefined' && process.env.NODE_ENV === 'production')
+  const BASE_URL = (process.env.NODE_ENV === 'deployment')
     ? 'https://task-flow.fly.dev' 
     : 'http://localhost:8080';
   
