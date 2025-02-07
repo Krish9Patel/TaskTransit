@@ -21,3 +21,9 @@ primary_region = 'ord'
   cpu_kind = 'shared'
   cpus = 1
   memory_mb = 1024
+
+[deploy]
+strategy = "rolling"
+
+[processes]
+app = "node index.js"
