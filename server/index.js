@@ -14,7 +14,7 @@ app.use(cors());
 
 // Route
 app.get('/', (req, res) => {
-    res.send('Task Flow Backend is Running')
+    res.send('index.html') 
 });
 
 // Starting server
