@@ -3,28 +3,28 @@ function toggleTheme() {
     document.body.dataset.theme = 
         document.body.dataset.theme === 'dark' ? 'light' : 'dark';
     localStorage.setItem('theme', document.body.dataset.theme);
-  }
+}
   
-  // Load saved theme
-  const savedTheme = localStorage.getItem('theme');
-  if (savedTheme) document.body.dataset.theme = savedTheme;
+// Load saved theme
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme) document.body.dataset.theme = savedTheme;
   
-  // Chart things
-  let tasks = [];
-  const svg = d3.select("svg");
-  const margin = { top: 20, right: 20, bottom: 30, left: 100 };
-  const width = svg.node().getBoundingClientRect().width - margin.left - margin.right;
-  const height = 400 - margin.top - margin.bottom;
-  const g = svg.append("g").attr("transform", `translate(${margin.left},${margin.top})`);
+// Chart things
+let tasks = [];
+const svg = d3.select("svg");
+const margin = { top: 20, right: 20, bottom: 30, left: 100 };
+const width = svg.node().getBoundingClientRect().width - margin.left - margin.right;
+const height = 400 - margin.top - margin.bottom;
+const g = svg.append("g").attr("transform", `translate(${margin.left},${margin.top})`);
   
-  // Modal functionality
-  const infoModal = document.getElementById("infoModal");
-  const editModal = document.getElementById("editModal");
+// Modal functionality
+const infoModal = document.getElementById("infoModal");
+const editModal = document.getElementById("editModal");
   
-  // Use a consistent variable name for the task ID
-  let currentTaskId = null;
+// Use a consistent variable name for the task ID
+let currentTaskId = null;
   
-  async function fetchTasks() {
+async function fetchTasks() {
     try { 
         const response = await fetch('/api/tasks');
         if (!response.ok) throw new Error('Failed to fetch tasks');
@@ -39,31 +39,31 @@ function toggleTheme() {
         console.error('Error:', error);
         alert('Failed to load tasks');
     }
-  }
+}
   
-  fetchTasks();
+fetchTasks();
   
-  // Close buttons for both modals
-  const closeButtons = document.querySelectorAll(".close");
-  closeButtons.forEach(btn => {
+// Close buttons for both modals
+const closeButtons = document.querySelectorAll(".close");
+closeButtons.forEach(btn => {
     btn.addEventListener("click", () => {
         infoModal.style.display = "none";
         editModal.style.display = "none";
     });
-  });
+});
   
-  // Close modals when clicking outside
-  window.addEventListener("click", (event) => {
+// Close modals when clicking outside
+window.addEventListener("click", (event) => {
     if (event.target === infoModal) {
         infoModal.style.display = "none";
     }
     if (event.target === editModal) {
         editModal.style.display = "none";
     }
-  });
+});
   
-  // Update chart function
-  function updateChart() {
+// Update chart function
+function updateChart() {
     g.selectAll("*").remove();
     
     if (tasks.length === 0) return;
@@ -100,19 +100,19 @@ function toggleTheme() {
         });
     
     g.append("g").attr("transform", `translate(0,${height})`).call(d3.axisBottom(x));
-  }
+}
   
-  // Delete task 
-  function deleteTask(taskName) {
+// Delete task 
+function deleteTask(taskName) {
     const index = tasks.findIndex(task => task.name === taskName);
     if (index !== -1) {
         tasks.splice(index, 1);
         updateChart();
     }
-  }
+}
   
-  // Task form submit
-  document.getElementById("taskForm").addEventListener("submit", async(event) => {
+// Task form submit
+document.getElementById("taskForm").addEventListener("submit", async(event) => {
     event.preventDefault();
   
     const taskData = {
@@ -136,27 +136,28 @@ function toggleTheme() {
     } catch (error) {
         alert(error.message);
     }
-  });
+});
   
-  // Task info modal to show description
-  function showTaskInfo(task) {
+// Task info modal to show description
+function showTaskInfo(task) {
     document.getElementById("infoTitle").textContent = task.name;
     document.getElementById("infoDescription").textContent = task.description;
     infoModal.style.display = "flex";
-  }
+}
   
-  // Edit form modal to edit a task
-  function showEditForm(task) {
+// Edit form modal to edit a task
+function showEditForm(task) {
     currentTaskId = task._id; // Use consistent variable name
     document.getElementById("editTaskName").value = task.name;
     document.getElementById("editTaskDescription").value = task.description;
-    document.getElementById("editStartDate").value = task.start.split('T')[0];
-    document.getElementById("editEndDate").value = task.end.split('T')[0];
+    // Convert Date objects to ISO strings and then extract the date portion
+    document.getElementById("editStartDate").value = task.start.toISOString().split('T')[0];
+    document.getElementById("editEndDate").value = task.end.toISOString().split('T')[0];
     editModal.style.display = "flex";
-  }
+}
   
-  // Edit form submit
-  document.getElementById("editForm").addEventListener("submit", async function(event) {
+// Edit form submit
+document.getElementById("editForm").addEventListener("submit", async function(event) {
     event.preventDefault();
     
     const updatedTask = {
@@ -183,10 +184,10 @@ function toggleTheme() {
     } catch (error) {
         alert(error.message);
     }
-  });
+});
   
-  // Delete task button in edit modal
-  document.getElementById("deleteTask").addEventListener("click", async function() {
+// Delete task button in edit modal
+document.getElementById("deleteTask").addEventListener("click", async function() {
     if (!currentTaskId) return;
   
     try {
@@ -204,5 +205,4 @@ function toggleTheme() {
     } catch (error) {
         alert(error.message);
     }
-  });
-  
+});
