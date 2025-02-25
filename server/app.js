@@ -151,8 +151,8 @@ function showEditForm(task) {
     document.getElementById("editTaskName").value = task.name;
     document.getElementById("editTaskDescription").value = task.description;
     // Convert Date objects to ISO strings and then extract the date portion
-    document.getElementById("editStartDate").value = task.start.toISOString().split('T')[0];
-    document.getElementById("editEndDate").value = task.end.toISOString().split('T')[0];
+    document.getElementById("editStartDate").value = new Date(task.start).toISOString().split('T')[0];
+    document.getElementById("editEndDate").value = new Date(task.end).toISOString().split('T')[0];
     editModal.style.display = "flex";
 }
   
