@@ -43,7 +43,8 @@ router.put('/:id', async (req, res) => {
             { $set: req.body },
             { 
                 new: true,
-                runValidators: true  
+                runValidators: true,  
+                context: 'query'
             }
         );
         if (!updatedTask) {
