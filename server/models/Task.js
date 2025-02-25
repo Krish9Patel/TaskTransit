@@ -17,9 +17,19 @@ const TaskSchema = new mongoose.Schema({
         required: [true, 'Start Date required'],
         validate: {
             validator: function(value) {
-               return value < this.end;
-            },
-            message: 'Start date must be before end date'
+                if (this.getUpdate) {
+                    // Get the update object
+                    const update = this.getUpdate();
+                    // Prefer the update's end value if provided, else fallback to this.end (if it exists)
+                    const endValue = update.end || this.end;
+                    // If no endValue exists, skip validation (it will be caught by required validator)
+                    if (!endValue) return true;
+                    return new Date(value) < new Date(endValue);
+                  }
+                  // Otherwise, assume it's a normal save and compare as usual.
+                  return value < this.end;
+                },
+                message: 'Start date must be before end date'
         }
     },
     
