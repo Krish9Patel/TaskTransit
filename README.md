@@ -1,7 +1,7 @@
-TaskTransit 🚀
-A collaborative project management and task-tracking platform designed for individuals and teams to streamline their workflow, visualize progress, and stay organized in real-time.
+# TaskTransit 🚀
+A collaborative project management and task-tracking platform designed for individuals and teams to streamline their workflow, visualize progress, and stay organized in real-time. 
 
-🧩 Features
+# 🧩 Features
 ✅ Create, assign, and manage tasks with due dates and priorities
 
 📅 Project timeline view with Gantt chart integration
@@ -14,7 +14,7 @@ A collaborative project management and task-tracking platform designed for indiv
 
 📊 Dashboard with progress analytics
 
-🛠️ Tech Stack
+# 🛠️ Tech Stack
 Frontend: React, TailwindCSS
 
 Backend: Node.js, Express
@@ -25,7 +25,7 @@ Auth: JWT-based authentication
 
 Hosting: Railway / Vercel / Fly.io (adjust as needed)
 
-🚀 Getting Started
+# 🚀 Getting Started
 1. Clone the repository
 bash
 Copy
@@ -61,7 +61,7 @@ cd ../frontend
 npm run dev
 Visit http://localhost:3000 to access TaskTransit locally.
 
-📁 Project Structure
+# 📁 Project Structure
 bash
 Copy
 Edit
@@ -80,7 +80,7 @@ tasktransit/
 │
 ├── README.md
 └── .env
-🧪 Future Features (Planned)
+# 🧪 Future Features (Planned)
 📲 Mobile responsive dashboard
 
 📝 Task comments and file uploads
