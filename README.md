@@ -1,4 +1,4 @@
-#TaskTransit 🚀
+TaskTransit 🚀
 A collaborative project management and task-tracking platform designed for individuals and teams to streamline their workflow, visualize progress, and stay organized in real-time.
 
 🧩 Features
