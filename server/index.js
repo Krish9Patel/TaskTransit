@@ -22,13 +22,10 @@ app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 // MongoDB connection
 const mongoURI = process.env.MONGO_URL || process.env.MONGO_URI;
 mongoose
-  .connect(mongoURI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  .connect(mongoURI)
   .then(() => console.log('MongoDB connected'))
   .catch((err) => console.error('MongoDB connection error:', err));
-
+  
 // Import and use the taskRoutes from server/routes/
 const taskRoutes = require('./routes/taskRoutes');
 app.use('/api/tasks', taskRoutes);
