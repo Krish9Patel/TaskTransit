@@ -1,6 +1,8 @@
 # TaskTransit 
 
-TaskTransit is a simple and intuitive task management application designed to help you visualize your workflow on an interactive timeline. It's built with a focus on simplicity and ease of use, allowing you to manage your projects at a glance.
+TaskTransit is a simple and intuitive task management application designed to help you visualize your workflow on an interactive timeline. It's built with a focus on simplicity and ease of use, allowing you to manage your projects at a glance. 
+
+[This version of the software has been archived; currently I am working on a new version of this project privately]
 
 # Features
 
